@@ -3,6 +3,7 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const { getTopPages } = require('./analytics');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,12 +20,11 @@ app.post('/subscribe', async (req, res) => {
     return res.status(400).json({ message: 'Email is required' });
   }
 
-  // Configurare transport nodemailer
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER,     // e.g. youremail@gmail.com
-      pass: process.env.EMAIL_PASS,     // parola de aplicație generată de Google
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
@@ -48,15 +48,7 @@ app.post('/subscribe', async (req, res) => {
   }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-
-const express = require('express');
-const { getTopPages } = require('./analytics');
-
+// Endpoint pentru top pagini (analytics)
 app.get('/api/analytics/top-pages', async (req, res) => {
   try {
     const data = await getTopPages();
@@ -65,4 +57,9 @@ app.get('/api/analytics/top-pages', async (req, res) => {
     console.error('Analytics error:', err.message);
     res.status(500).json({ error: 'Eroare Analytics' });
   }
+});
+
+// Pornire server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

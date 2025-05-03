@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+
+body{
+    background-color: #131313;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+@layer utilities {
+  .text-shadow-white {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Umbra albă */
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .author-date-section {
+    display: none;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scroll-fade::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 4rem;
+  height: 100%;
+  background: linear-gradient(to left, rgba(28, 28, 28, 1), rgba(28, 28, 28, 0));
+  pointer-events: none;
+  z-index: 10;
+}
+
+.scroll-fade-sports::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4rem;
+  height: 100%;
+  background: linear-gradient(to right, #131313, rgba(19, 19, 19, 0));
+  pointer-events: none;
+  z-index: 10;
+}

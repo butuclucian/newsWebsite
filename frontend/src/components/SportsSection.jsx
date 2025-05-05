@@ -59,7 +59,7 @@ const SportsSection = () => {
   }, []);
 
   return (
-    <section id="sports" ref={sectionRef} className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-500 ease-in-out 
+    <section id="sports" ref={sectionRef} className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-1000 ease-in-out 
           ${isVisible ? 'blur-0 opacity-100 translate-y-0' : 'blur-sm opacity-60 translate-y-10'}`}>
 
       <div className="max-w-6xl mx-auto">
@@ -73,7 +73,7 @@ const SportsSection = () => {
           <div className="grid grid-cols-1 gap-y-[1.25rem] gap-x-6 max-w-135 mx-auto">
             <div onClick={() => handleCardClick(largeCard.id)} className="bg-[#848484]/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300 hover:bg-[#EDE618]/50 hover:shadow-[0px_0px_30px_#EDE618]/20 flex flex-col">
               <div className="mx-4 mt-4">
-                <img src={largeCard.image} alt="thumb" className="w-full h-[18rem] object-cover rounded-xl" />
+                <img loading='lazy' src={largeCard.image} alt="thumb" className="w-full h-[18rem] object-cover rounded-xl" />
               </div>
               {/* ----- title + desc ---- */}
               <div className="px-4 py-2 min-h-[4.5rem] flex-grow">
@@ -83,7 +83,7 @@ const SportsSection = () => {
               {/* ---- author + date ---- */}
               <div className="flex items-center justify-between bg-[#1c1c1c] rounded-xl px-3 py-3 mx-3 mt-24 mb-4 cursor-pointer">
                 <div className="flex items-center gap-2">
-                  <img src={largeCard.authorImage} alt="author" className="w-10 h-10 rounded-md object-cover" />
+                  <img loading='lazy' src={largeCard.authorImage} alt="author" className="w-10 h-10 rounded-md object-cover" />
                   <div className="text-white text-xs">
                     <p className="font-medium">{largeCard.authorName}</p>
                     <p className="text-[10px] text-gray-400">{largeCard.publishDate}</p>
@@ -107,7 +107,7 @@ const SportsSection = () => {
                     {group.map((card, i) => (
                       <div key={i} onClick={() => handleCardClick(card.id)} className="bg-[#848484]/50 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden  transition-transform duration-300 hover:bg-[#EDE618]/50 hover:shadow-[0px_0px_30px_#EDE618]/20">
                         <div className="mx-3 mt-3">
-                          <img src={card.image} alt="thumb" className="w-full h-[10rem] object-cover rounded-2xl" />
+                          <img loading='lazy' src={card.image} alt="thumb" className="w-full h-[10rem] object-cover rounded-2xl" />
                         </div>
                         <div className="px-4 py-2 min-h-[4.5rem] gap-2 flex flex-col justify-between">
                           <h4 className="text-sm font-semibold text-white leading-snug line-clamp-1 overflow-hidden">{card.title}</h4>
@@ -115,7 +115,7 @@ const SportsSection = () => {
                         </div>
                         <div className="flex items-center justify-between bg-[#1c1c1c] rounded-xl px-3 py-2 mx-3 mt-1 mb-2 cursor-pointer">
                           <div className="flex items-center gap-2">
-                            <img src={card.authorImage} alt="author" className="w-10 h-10 rounded-md object-cover" />
+                            <img loading='lazy' src={card.authorImage} alt="author" className="w-10 h-10 rounded-md object-cover" />
                             <div className="text-white text-xs">
                               <p className="font-medium">{card.authorName}</p>
                               <p className="text-[10px] text-gray-400">{card.publishDate}</p>

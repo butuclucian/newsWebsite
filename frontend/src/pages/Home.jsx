@@ -1,4 +1,4 @@
-import React, { useEffect,useState,lazy, Suspense } from 'react'
+import React, { useEffect, useState, lazy, Suspense } from 'react'
 import Hero from '../components/Hero'
 
 const NewsSection = lazy(() => import('../components/NewsSection'))
@@ -6,7 +6,6 @@ const SportsSection = lazy(() => import('../components/SportsSection'))
 
 const Home = () => {
   useEffect(() => {
-
     // Preîncarcă componentele în fundal
     import('../components/NewsSection')
     import('../components/SportsSection')
@@ -16,12 +15,12 @@ const Home = () => {
   return (
     <div className="">
       <Hero />
-      
-      <Suspense fallback={<div className="text-white text-center">Se încarcă noutățile...</div>}>
+
+      <Suspense fallback={<div className="text-white text-center">loading...</div>}>
         <NewsSection />
       </Suspense>
 
-      <Suspense fallback={<div className="text-white text-center">Se încarcă secțiunea sport...</div>}>
+      <Suspense fallback={<div className="text-white text-center">loading...</div>}>
         <SportsSection />
       </Suspense>
     </div>

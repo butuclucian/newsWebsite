@@ -1,43 +1,27 @@
-import { OpenAI } from 'openai';
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
+import express from 'express'
+import cors from 'cors'
+import 'dotenv/config'
+import connectDB from './config/mongodb.js'
+import connectCloudinary from './config/cloudinary.js'
+import userRouter from './routes/userRoute.js'
+import articleRouter from './routes/articleRoute.js'
 
+// app config
+const app = express()
+const port = process.env.PORT || 5000
+connectDB()
+connectCloudinary()
 
-dotenv.config();
-const app = express();
-app.use(cors());
-app.use(express.json());
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// middlewares
+app.use(express.json())
+app.use(cors())
 
-app.post('/api/openai/generate-titles', async (req, res) => {
-  const { description } = req.body;
+// api endpoints
+app.use('/api/user',userRouter)
+app.use('/api/article',articleRouter)
 
-  try {
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        {
-          role: 'system',
-          content: 'You are a helpful assistant that generates catchy article titles.',
-        },
-        {
-          role: 'user',
-          content: `Generează 3 titluri scurte și atractive pentru un articol cu această descriere:\n\n${description}`,
-        },
-      ],
-    });
+app.get('/',(req,res)=>{
+    res.send("api working...")
+})
 
-    const titles = completion.choices[0].message.content
-      .split('\n')
-      .map((line) => line.replace(/^\d+\.\s*/, '').trim())
-      .filter((line) => line);
-
-    res.json({ titles });
-  } catch (error) {
-    console.error('Eroare OpenAI:', error);
-    res.status(500).json({ error: 'Eroare la generarea titlurilor.' });
-  }
-});
-
-app.listen(5000, () => console.log('Server is running on http://localhost:5000'));
+app.listen(port,()=>console.log('server started on PORT : '+ port))

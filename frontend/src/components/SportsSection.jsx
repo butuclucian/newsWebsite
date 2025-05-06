@@ -59,7 +59,7 @@ const SportsSection = () => {
   }, []);
 
   return (
-    <section id="sports" ref={sectionRef} className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-1000 ease-in-out 
+    <section id="sports" ref={sectionRef} className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-500 ease-in-out 
           ${isVisible ? 'blur-0 opacity-100 translate-y-0' : 'blur-sm opacity-60 translate-y-10'}`}>
 
       <div className="max-w-6xl mx-auto">

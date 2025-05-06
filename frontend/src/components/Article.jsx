@@ -1,4 +1,3 @@
-// src/pages/Article.jsx
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { homepageArticles } from '../assets/assets';

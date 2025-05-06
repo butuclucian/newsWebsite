@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { homepageArticles } from '../assets/assets';
+import { authors } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 
 const largeCard = homepageArticles.news[0];  // Primul articol din 'news'
-
 const smallCards = homepageArticles.news.slice(1, 9);  // Restul articolelor (de la 2 la 9)
 
 const chunkArray = (arr, size) => {
@@ -19,11 +19,11 @@ const NewsSection = () => {
   const sliderRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   
-    const handleCardClick = (articleId) => {
-      navigate(`/article/${articleId}`);
-    }
+  const handleCardClick = (articleId) => {
+    navigate(`/article/${articleId}`);
+  };
 
   const chunkedSmallCards = chunkArray(smallCards, 4); // 4 carduri (2x2)
 
@@ -56,9 +56,12 @@ const NewsSection = () => {
     };
   }, []);
 
+
+  const getAuthorById = (id) => authors.find((author) => author.id === id);
+
   return (
     <section id="news" ref={sectionRef}
-      className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-500 ease-in-out bg-[#1c1c1c] 
+      className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-1000 ease-in-out bg-[#1c1c1c] 
         ${isVisible ? 'blur-0 opacity-100 translate-y-0' : 'blur-sm opacity-60 translate-y-10'}`}>
           
       <div className="max-w-6xl mx-auto">
@@ -73,35 +76,40 @@ const NewsSection = () => {
               <div  className="flex gap-6 pr-4 justify-center md:justify-start">
                 {chunkedSmallCards.map((group, idx) => (
                   <div key={idx}  className="grid grid-cols-2 gap-y-[1.25rem] gap-x-6 min-w-[35rem]">
-                    {group.map((card, i) => (
-                      <div key={i} onClick={() => handleCardClick(card.id)}  className="bg-[#848484]/50 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden  transition-transform duration-300 hover:bg-[#EDE618]/50 hover:shadow-[0px_0px_30px_#EDE618]/20">
-                        <div className="mx-3 mt-3">
-                          <img loading='lazy' src={card.image} alt="thumb" className="w-full h-[10rem] object-cover rounded-2xl" />
-                        </div>
-                        <div className="px-4 py-2 min-h-[4.5rem] gap-2 flex flex-col justify-between">
-                          <h4 className="text-sm font-semibold text-white leading-snug line-clamp-1 overflow-hidden">{card.title}</h4>
-                          <p className="text-xs text-gray-300 leading-snug line-clamp-2 overflow-hidden">{card.description}</p>
-                        </div>
-                        <div className="flex items-center justify-between bg-[#1c1c1c] rounded-xl px-3 py-2 mx-3 mt-1 mb-2 cursor-pointer">
-                          <div className="flex items-center gap-2">
-                            <img loading='lazy' src={card.authorImage} alt="author" className="w-10 h-10 rounded-md object-cover" />
-                            <div className="text-white text-xs">
-                              <p className="font-medium">{card.authorName}</p>
-                              <p className="text-[10px] text-gray-400">{card.publishDate}</p>
-                            </div>
+                    {group.map((card, i) => {
+                      const author = getAuthorById(card.authorId);
+                      return (
+                        <div key={i} onClick={() => handleCardClick(card.id)}  className="bg-[#848484]/50 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 hover:bg-[#EDE618]/50 hover:shadow-[0px_0px_30px_#EDE618]/20">
+                          <div className="mx-3 mt-3">
+                            <img loading='lazy' src={card.image} alt="thumb" className="w-full h-[10rem] object-cover rounded-2xl" />
                           </div>
-                          <button className="text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5v14l7-5 7 5V5H5z" />
-                            </svg>
-                          </button>
+                          <div className="px-4 py-2 min-h-[4.5rem] gap-2 flex flex-col justify-between">
+                            <h4 className="text-sm font-semibold text-white leading-snug line-clamp-1 overflow-hidden">{card.title}</h4>
+                            <p className="text-xs text-gray-300 leading-snug line-clamp-2 overflow-hidden">{card.description}</p>
+                          </div>
+                          <div className="flex items-center justify-between bg-[#1c1c1c] rounded-xl px-3 py-2 mx-3 mt-1 mb-2 cursor-pointer">
+                            <div className="flex items-center gap-2">
+                              {authors && (
+                                <>
+                                  <img loading='lazy' src={authors.image} alt="author" className="w-10 h-10 rounded-md object-cover" />
+                                  <div className="text-white text-xs">
+                                    <p className="font-medium">{authors.name}</p>
+                                    <p className="text-[10px] text-gray-400">{card.publishDate}</p>
+                                  </div>
+                                </>
+                              )}
+                            </div>
+                            <button className="text-white">
+                              <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5v14l7-5 7 5V5H5z" />
+                              </svg>
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 ))}
-
-                
               </div>
             </div>
 
@@ -134,11 +142,15 @@ const NewsSection = () => {
               {/* ---- author + date ---- */}
               <div className="flex items-center justify-between bg-[#1c1c1c] rounded-xl px-3 py-3 mx-3 mt-24 mb-4 cursor-pointer">
                 <div className="flex items-center gap-2">
-                  <img loading='lazy' src={largeCard.authorImage} alt="author" className="w-10 h-10 rounded-md object-cover" />
-                  <div className="text-white text-xs">
-                    <p className="font-medium">{largeCard.authorName}</p>
-                    <p className="text-[10px] text-gray-400">{largeCard.publishDate}</p>
-                  </div>
+                  {getAuthorById(largeCard.authorId) && (
+                    <>
+                      <img loading='lazy' src={getAuthorById(largeCard.authorId).image} alt="author" className="w-10 h-10 rounded-md object-cover" />
+                      <div className="text-white text-xs">
+                        <p className="font-medium">{getAuthorById(largeCard.authorId).name}</p>
+                        <p className="text-[10px] text-gray-400">{largeCard.publishDate}</p>
+                      </div>
+                    </>
+                  )}
                 </div>
                 <button className="text-white">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">

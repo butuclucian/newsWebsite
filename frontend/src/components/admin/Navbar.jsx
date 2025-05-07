@@ -28,7 +28,7 @@ const Navbar = () => {
                 </div>
 
                 {/* ---- mid links ---- */}
-                <div className='absolute left-1/2 transform -translate-x-1/2 flex space-x-10'>
+                <div className='hidden md:flex absolute left-1/2 transform -translate-x-1/2 space-x-10'>
                     <NavLink to="/admin">
                         <a href="/admin" className='text-lg'>Dashboard</a>
                     </NavLink>

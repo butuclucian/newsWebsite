@@ -3,6 +3,8 @@ import { FaFacebookF } from "react-icons/fa";
 import { Eye, EyeOff } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {useUser} from "../context/UserContext";
+import {useNavigate} from "react-router-dom"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,7 +12,9 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null); // Simulate user state
+
+  const {login} = useUser();
+  const navigate=useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +29,7 @@ const Login = () => {
       if (username === "admin" && password === "12345678") {
         const loggedInUser = { username: "admin", role: "admin" };
         localStorage.setItem("user", JSON.stringify(loggedInUser));
-        setUser(loggedInUser);  // Setează utilizatorul în stare locală pentru a actualiza Navbar
+        login(loggedInUser);  // Setează utilizatorul în stare locală pentru a actualiza Navbar
         toast.success("Successfully logged in!");
         navigate('/');
       } else {

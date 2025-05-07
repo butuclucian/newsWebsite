@@ -24,7 +24,7 @@ function Contact() {
   };
 
   return (
-    <div className="mt-45  flex items-center justify-center px-4 text-white">
+    <div className="mt-25  flex items-center justify-center px-4 text-white">
       <div className="w-full max-w-[28rem] space-y-6 p-8 rounded-xl shadow-lg">
 
         {/* ----title---- */}
@@ -51,7 +51,7 @@ function Contact() {
             <textarea rows="4" placeholder="Your message" value={message} onChange={(e) => setMessage(e.target.value)} className="w-full px-4 py-2 rounded-md bg-[#212121] text-white placeholder-gray-500 focus:outline-none"/>
           </div>
 
-          <button type="submit" className="w-full bg-white text-black font-semibold py-2 rounded-md hover:bg-gray-200 transition">Send Message</button>
+          <button type="submit" className="w-full bg-white text-black font-semibold py-2 rounded-md hover:bg-gray-200 transition cursor-pointer">Send Message</button>
 
           {status && (
             <p className={`text-center text-sm ${status.includes('Failed') ? 'text-red-500' : 'text-green-500'}`}>{status}</p>

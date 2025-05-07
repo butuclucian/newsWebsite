@@ -8,6 +8,8 @@ const Navbar = () => {
   const [savedArticles, setSavedArticles] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+
+
   // Verificăm dacă utilizatorul este logat folosind localStorage
   const { user, logout } = useUser();
   const isAdmin = user && user.role === 'admin'; // Verifică dacă utilizatorul este admin
@@ -109,14 +111,14 @@ const Navbar = () => {
         {userMenuOpen && user && (
           <div className="absolute right-8 mt-45 w-40 bg-[#212121]/97 rounded-xl shadow-[0px_10px_40px_#0d0d0d] z-50 text-left">
             <NavLink to="/myaccount">
-              <a href="/myaccount" className="block px-4 py-2 hover:bg-[#444] hover:rounded-t-xl" onClick={() => setUserMenuOpen(false)}>My Account</a>
+              <p href="/myaccount" className="block px-4 py-2 hover:bg-[#444] hover:rounded-t-xl" onClick={() => setUserMenuOpen(false)}>My Account</p>
             </NavLink>
-            <a href="/settings" className="block px-4 py-2 hover:bg-[#444]" onClick={() => setUserMenuOpen(false)}>Settings</a>
-            <a href="#" className="block px-4 py-2 hover:bg-[#444] hover:rounded-b-xl" onClick={() => {
+            <p href="/settings" className="block px-4 py-2 hover:bg-[#444]" onClick={() => setUserMenuOpen(false)}>Settings</p>
+            <p href="#" className="block px-4 py-2 hover:bg-[#444] hover:rounded-b-xl" onClick={() => {
               localStorage.removeItem("user");
               setUserMenuOpen(false);
               window.location.reload(); // sau navigate("/") dacă folosești react-router
-            }}>Logout</a>
+            }}>Logout</p>
           </div>
         )}
       </div>

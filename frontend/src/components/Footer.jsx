@@ -16,7 +16,7 @@ const Footer = () => {
 
     try {
       await axios.post('http://localhost:5000/subscribe', { email });
-      setMessage('✅ Check your inbox! ✉️');
+      setMessage('✅ Check your inbox!');
       setError(false);
       setEmail('');
     } catch (err) {
@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
 
         <p className="pt-4 text-center text-xs md:text-sm pb-5">
-          Copyright 2024 © Company name. All Rights Reserved.
+          Copyright 2025 © newsWebsite name. All Rights Reserved.
         </p>
       </div>
     </footer>

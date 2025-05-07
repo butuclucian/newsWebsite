@@ -146,7 +146,10 @@ const AddArticle = () => {
             Post Article
           </button>
         </div>
+
       </form>
+
+      
     </div>
   );
 };

@@ -63,7 +63,7 @@ const SportsSection = () => {
           ${isVisible ? 'blur-0 opacity-100 translate-y-0' : 'blur-sm opacity-60 translate-y-10'}`}>
       <div className="max-w-6xl mx-auto">
         <h2 className="hidden sm:block text-9xl font-bold text-center mb-12 relative">
-          <span className="relative z-10">SPORTS</span>
+          <span className="relative z-10 dark:text-[#7e8082]">SPORTS</span>
         </h2>
 
         <div className="flex flex-col md:flex-row gap-x-[2rem] gap-y-[3rem] relative z-10 top-[-80px]">
@@ -80,7 +80,7 @@ const SportsSection = () => {
                 {/* Mobile View: one card per slide */}
                 <div className="flex sm:hidden">
                   {chunkedSmallCards.flat().map((card, i) => (
-                    <div key={i} className="min-w-[90vw] max-w-[90vw] max-w-screen px-4 box-border">
+                    <div key={i} className="min-w-[90vw] max-w-[90vw] px-4 box-border">
                       <Article article={card} isLarge={false} onClick={handleCardClick} />
                     </div>
                   ))}

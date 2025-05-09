@@ -32,7 +32,7 @@ const Saved = () => {
 
   if (savedArticles.length === 0) {
     return (
-      <div className="text-center text-gray-300 mt-20">
+      <div className="text-center text-gray-300 mt-30">
         <h2 className="text-3xl font-semibold mb-4">No saved articles yet</h2>
         <p className="text-sm">Start saving articles to read later!</p>
       </div>

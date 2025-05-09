@@ -5,6 +5,13 @@ import userIcon from './user.png';
 import logo from './logo.jpg';
 import admin from './admin.jpg';
 
+
+import latest1 from './latest1.jpg'
+import latest2 from './latest2.jpg'
+import latest3 from './latest3.jpg'
+import latest4 from './latest4.jpg'
+import latest5 from './latest5.jpg'
+
 import news1 from './news1.jpg';
 import news2 from './news2.jpg';
 import news3 from './news3.jpg';
@@ -37,6 +44,11 @@ export const assets = {
     userIcon,
     logo,
     admin,
+    latest1,
+    latest1,
+    latest3,
+    latest4,
+    latest5,
     news1,
     news2,
     news3,
@@ -162,7 +174,7 @@ export const latestArticles = [
         description: 'Stocks around the world surged following a better-than-expected economic forecast.',
         authorId: getAuthorIdByName('Sophia Evans'),
         publishDate: '2025-04-26',
-        image: news2,
+        image: latest1,
     },
     {
         id: 20,
@@ -171,7 +183,7 @@ export const latestArticles = [
         description: 'A new battery could power devices for days with just minutes of charging.',
         authorId: getAuthorIdByName('Liam Martinez'),
         publishDate: '2025-04-26',
-        image: news3,
+        image: latest2,
     },
     {
         id: 21,
@@ -180,7 +192,7 @@ export const latestArticles = [
         description: 'Fans react as a major player makes a shocking move across rival clubs.',
         authorId: getAuthorIdByName('Olivia Davis'),
         publishDate: '2025-04-26',
-        image: sport1,
+        image: latest3,
     },
     {
         id: 22,
@@ -189,7 +201,7 @@ export const latestArticles = [
         description: 'Updated health recommendations released for the general public.',
         authorId: getAuthorIdByName('Noah Johnson'),
         publishDate: '2025-04-26',
-        image: news4,
+        image: latest4,
     },
     {
         id: 23,
@@ -198,7 +210,7 @@ export const latestArticles = [
         description: 'An unbelievable performance leaves fans and experts speechless.',
         authorId: getAuthorIdByName('Emma Thompson'),
         publishDate: '2025-04-26',
-        image: sport2,
+        image: latest5,
     }
 ];
 
@@ -546,7 +558,7 @@ export const fullArticles = {
         id: 19,
         section: 'World',
         title: 'Global Markets Rally After Economic Report',
-        image: news2,
+        image: latest1,
         content: 'Stocks around the world surged following a better-than-expected economic forecast. Stocks around the world surged following a better-than-expected economic forecast. Stocks around the world surged following a better-than-expected economic forecast. Stocks around the world surged following a better-than-expected economic forecast.',
         authorId: getAuthorIdByName('Sophia Evans'),
         publishDate: '2025-04-26'
@@ -555,7 +567,7 @@ export const fullArticles = {
         id: 20,
         section: 'Tech',
         title: 'Breakthrough Battery Technology Revealed',
-        image: news3,
+        image: latest2,
         content: 'A new battery could power devices for days with just minutes of charging. This revolutionary technology promises to transform how we use portable electronics and electric vehicles.',
         authorId: getAuthorIdByName('Liam Martinez'),
         publishDate: '2025-04-26'
@@ -564,7 +576,7 @@ export const fullArticles = {
         id: 21,
         section: 'Football',
         title: 'Star Player Transfers to Rival Team',
-        image: sport1,
+        image: latest3,
         content: 'Fans react as a major player makes a shocking move across rival clubs. The transfer has sent shockwaves through the sporting world and changed the landscape of the upcoming season.',
         authorId: getAuthorIdByName('Olivia Davis'),
         publishDate: '2025-04-26'
@@ -573,7 +585,7 @@ export const fullArticles = {
         id: 22,
         section: 'Medicine',
         title: 'New Health Guidelines Announced',
-        image: news4,
+        image: latest4,
         content: 'Updated health recommendations released for the general public. These new guidelines reflect the latest research and aim to improve public health outcomes across all demographics.',
         authorId: getAuthorIdByName('Noah Johnson'),
         publishDate: '2025-04-26'
@@ -582,7 +594,7 @@ export const fullArticles = {
         id: 23,
         section: 'Formula1',
         title: 'Driver Sets Unbeatable Track Record',
-        image: sport2,
+        image: latest5,
         content: 'An unbelievable performance leaves fans and experts speechless. The record-breaking lap has set a new standard in motorsport that many believe will stand for years to come.',
         authorId: getAuthorIdByName('Emma Thompson'),
         publishDate: '2025-04-26'

@@ -80,13 +80,13 @@ const AddArticle = () => {
               placeholder="Type here">
             </textarea>
 
-            <button type="button" onClick={handleGenerateTitles}
+            {/* <button type="button" onClick={handleGenerateTitles}
               className="mt-2 px-4 py-2 bg-black text-white rounded-md hover:bg-white hover:text-black hover:border-black border-1 transition cursor-pointer">
               {loadingTitles ? 'Generating...' : 'Generate titles'}
-            </button>
+            </button> */}
 
             {/* --- titluri generate --- */}
-            {titleSuggestions.length > 0 && (
+            {/* {titleSuggestions.length > 0 && (
               <div className="flex flex-col gap-2 mt-4">
                 <p className="text-sm text-gray-500">Sugestii titluri generate:</p>
                 {titleSuggestions.map((suggestion, index) => (
@@ -98,7 +98,7 @@ const AddArticle = () => {
                   </div>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </div>
 

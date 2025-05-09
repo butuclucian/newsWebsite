@@ -16,10 +16,10 @@ const Navbar = () => {
 
 
   return (
-    <header className="flex justify-between items-center px-6 py-4 bg-[#212121]/90 backdrop-blur-md z-50 overflow-visible text-white rounded-2xl mt-4 max-w-[1200px] mx-auto font-medium max-h-[70px] sm:px-6 lg:px-8 fixed top-0 left-4 right-4 shadow-[0px_5px_15px_#0d0d0d]">
+    <header className="flex justify-between items-center px-6 py-4 bg-[#212121]/90 dark:bg-[#7e8082] backdrop-blur-md z-50 overflow-visible text-white rounded-2xl mt-4 max-w-[1200px] mx-auto font-medium max-h-[70px] sm:px-6 lg:px-8 fixed top-0 left-4 right-4 shadow-[0px_5px_15px_#0d0d0d] dark:shadow-amber-50">
       {/* ---- left side */}
       <Link to='/' className="hidden md:flex items-start w-full max-w-[250px] gap-2">
-        <img src={assets.logo} alt="Logo" className="w-12 h-12 rounded-full cursor-pointer" />
+        <img src={assets.logo} alt="Logo" className="w-12 h-12 rounded-full cursor-pointer object-cover" />
       </Link>
 
       {/* --- mobile burger menu --- */}
@@ -97,7 +97,7 @@ const Navbar = () => {
         {/* ---- user icon ---- */}
         {user ? (
           <div onClick={() => setUserMenuOpen(!userMenuOpen)} className="w-12 h-12 rounded-full bg-gray-600 cursor-pointer">
-            <img src={assets.admin || "/profile.jpg"} alt="User" className="w-full h-full rounded-full" />
+            <img src={assets.admin || "/profile.jpg"} alt="User" className="w-full h-full rounded-full object-cover" />
           </div>
         ) : (
           <div className="relative cursor-pointer">
@@ -109,7 +109,7 @@ const Navbar = () => {
 
         {/* ---- user menu dropdown ---- */}
         {userMenuOpen && user && (
-          <div className="absolute right-8 mt-45 w-40 bg-[#212121]/97 rounded-xl shadow-[0px_10px_40px_#0d0d0d] z-50 text-left">
+          <div className="absolute right-8 mt-45 w-40 bg-[#212121]/97 rounded-xl shadow-[0px_10px_40px_#0d0d0d] z-50 text-left cursor-pointer">
             <NavLink to="/myaccount">
               <p href="/myaccount" className="block px-4 py-2 hover:bg-[#444] hover:rounded-t-xl" onClick={() => setUserMenuOpen(false)}>My Account</p>
             </NavLink>
@@ -117,7 +117,7 @@ const Navbar = () => {
             <p href="#" className="block px-4 py-2 hover:bg-[#444] hover:rounded-b-xl" onClick={() => {
               localStorage.removeItem("user");
               setUserMenuOpen(false);
-              window.location.reload(); // sau navigate("/") dacă folosești react-router
+              window.location.reload();
             }}>Logout</p>
           </div>
         )}

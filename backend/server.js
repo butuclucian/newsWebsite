@@ -7,6 +7,7 @@ import userRouter from './routes/userRoute.js'
 import articleRouter from './routes/articleRoute.js'
 import nodemailer from 'nodemailer'
 
+
 // app config
 const app = express()
 const port = process.env.PORT || 5000

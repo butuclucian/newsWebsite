@@ -26,12 +26,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full text-white bg-[#212121] mt-10">
+    <footer className="w-full text-white bg-[#212121] mt-10 dark:bg-[#7e8082]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-16 lg:px-24 xl:px-32 pt-8">
         <div className="flex flex-col md:flex-row justify-center gap-10 border-b border-gray-500/30 pb-6">
           <div className="md:max-w-96">
             <div className="flex items-center gap-4 mb-6">
-              <img src={assets.logo} alt="logo" className="rounded-full h-12" />
+              <img src={assets.logo} alt="logo" className="rounded-full h-12 object-cover" />
               <p className="text-2xl font-bold text-[#EDE618]">newsWebsite</p>
             </div>
             <p className="mt-6 text-sm">
@@ -56,12 +56,8 @@ const Footer = () => {
                 <p>The latest news, articles, and resources sent to your inbox weekly.</p>
                 <div className="flex items-center gap-2 pt-4">
                   <input
-                    className="border border-gray-500/30 placeholder-gray-500 outline-none w-full max-w-64 h-9 rounded px-2 text-white"
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                    className="border border-gray-500/30 placeholder-gray-500 outline-none w-full max-w-64 h-9 rounded px-2 text-white dark:placeholder-white dark:border-white" type="email"
+                    placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                   <button
                     onClick={handleSubscribe}
                     className="hover:bg-[#EDE618] hover:text-black hover:shadow-[0px_0px_30px_#EDE618]/20 bg-[#EDE618]/80 transition-all cursor-pointer px-6 py-2 rounded text-white font-medium"

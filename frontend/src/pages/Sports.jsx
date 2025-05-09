@@ -30,7 +30,7 @@ const Sports = () => {
   return (
     <section className="w-full py-25 px-6 text-white">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-5xl font-bold mb-10 text-center">All Sports Articles</h1>
+        <h1 className="text-5xl font-bold mb-10 text-center dark:text-[#7e8082]">All Sports Articles</h1>
 
         {/* Filter buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -39,7 +39,7 @@ const Sports = () => {
               key={section}
               onClick={() => setSelectedSection(section)}
               className={`px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer
-              ${selectedSection === section ? 'bg-[#EDE618] text-black font-semibold' : 'bg-[#333] text-white hover:bg-[#EDE618]/80 hover:text-black'}`}>
+              ${selectedSection === section ? 'bg-[#EDE618] text-black font-semibold' : 'bg-[#333] text-white hover:bg-[#EDE618]/80 hover:text-black dark:bg-[#7e8082]'}`}>
               {section}
             </button>
           ))}

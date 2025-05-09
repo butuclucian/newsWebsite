@@ -25,7 +25,7 @@ function Contact() {
 
   return (
     <div className="mt-25  flex items-center justify-center px-4 text-white">
-      <div className="w-full max-w-[28rem] space-y-6 p-8 rounded-xl shadow-lg">
+      <div className="w-full max-w-[28rem] space-y-6 p-8 rounded-xl shadow-lg dark:bg-[#7e8082]">
 
         {/* ----title---- */}
         <div className="text-center">

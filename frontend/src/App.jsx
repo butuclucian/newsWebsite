@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <SavedArticlesProvider>
-      <div className='bg-[#0d0d0d] text-white min-h-screen flex flex-col flex-grow'>
+      <div className='bg-[#0d0d0d] dark:bg-[#f5f5f5] text-white min-h-screen flex flex-col flex-grow'>
         {!isOwnerPath && <Navbar />}
         <div className="flex-grow">
           <Routes>

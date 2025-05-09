@@ -43,12 +43,12 @@ const Navbar = () => {
                 {/* right side ---- */}
                 <div className='relative' ref={dropdownRef}>
                     <img src={assets.admin} alt="Admin" className='rounded-full h-12 w-12 object-cover cursor-pointer' onClick={() => setIsDropdownOpen(!isDropdownOpen)} />
-                    {isDropdownOpen && (
+                    {/* {isDropdownOpen && (
                         <div className='absolute right-0 mt-2 w-40 bg-white border rounded-md shadow-lg py-2 z-50'>
                             <Link to="/" className='block px-4 py-2 text-sm hover:bg-gray-100'>Website</Link>
                             <button className='w-full text-left px-4 py-2 text-sm hover:bg-gray-100'> Logout</button>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </div>
         </div>

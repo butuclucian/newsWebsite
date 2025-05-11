@@ -1,4 +1,4 @@
-import React, { use } from 'react'
+import React, { use, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -22,6 +22,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
+  
+
   const isOwnerPath = useLocation().pathname.includes('/admin')
 
   return (
@@ -35,7 +37,7 @@ const App = () => {
             <Route path='/sports' element={<Sports />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/myaccount' element={<MyAccount />} />
-            <Route path='/settings' element={<Settings/>}/>
+            <Route path='/settings' element={<Settings />} />
             <Route path='/saved' element={<Saved />} />
             <Route path='/login' element={<Login />} />
             <Route path='/article/:articleId' element={<ArticleDetail />} />

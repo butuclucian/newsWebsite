@@ -58,7 +58,7 @@ const NewsSection = () => {
   }, []);
 
   return (
-    <section id="news" ref={sectionRef} className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-1000 ease-in-out bg-[#1c1c1c] dark:bg-[#7e8082]
+    <section id="news" ref={sectionRef} className={`w-full text-white py-10 px-6 scroll-mt-20 transition-all duration-1000 ease-in-out bg-[#1c1c1c] dark:bg-[#7e8082]/30
       ${isVisible ? 'blur-0 opacity-100 translate-y-0' : 'blur-sm opacity-60 translate-y-10'}`}>
       <div className="max-w-6xl mx-auto mt-50 sm:mt-0">
         <h2 className="hidden sm:block text-9xl font-bold text-center mb-12 relative">

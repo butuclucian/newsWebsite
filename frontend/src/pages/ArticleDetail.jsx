@@ -30,7 +30,7 @@ const ArticleDetail = () => {
 
       {/* ---titlu + content ---- */}
       <div className='mb-4'>
-        <h1 className='text-3xl font-bold'>{article.title}</h1>
+        <h1 className='text-3xl font-bold dark:text-[#7e8082]'>{article.title}</h1>
       </div>
       <div className='text-lg text-gray-400 mb-6'>
         <p>{article.content}</p>
@@ -38,12 +38,12 @@ const ArticleDetail = () => {
 
       {/* --- footer ---- */}
       <div className='flex justify-between items-center border-t border-gray-600 pt-4 mt-6'>
-        <p className='text-sm text-gray-400'>{article.publishDate}</p>
+        <p className='text-sm text-gray-400 dark:text-[#7e8082]'>{article.publishDate}</p>
 
         {author && (
           <div className='flex items-center gap-3'>
             <img src={author.image} alt={author.name} className='w-10 h-10 rounded-full object-cover'/>
-            <p className='text-sm text-gray-300 font-medium'>{author.name}</p>
+            <p className='text-sm text-gray-300 font-medium dark:text-[#7e8082]'>{author.name}</p>
           </div>
         )}
       </div>

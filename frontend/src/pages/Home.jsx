@@ -6,7 +6,6 @@ const SportsSection = lazy(() => import('../components/SportsSection'))
 
 const Home = () => {
   useEffect(() => {
-    // Preîncarcă componentele în fundal
     import('../components/NewsSection')
     import('../components/SportsSection')
   }, [])

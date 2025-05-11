@@ -9,7 +9,6 @@ router.post('/contact', (req, res) => {
     return res.status(400).json({ error: 'All fields are required.' });
   }
 
-  // Simulăm salvarea sau trimiterea mesajului
   console.log('Contact message received:', { name, email, message });
 
   res.status(200).json({ success: 'Message received successfully.' });

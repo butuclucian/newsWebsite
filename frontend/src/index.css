@@ -11,7 +11,7 @@ html{
 
 @layer utilities {
   .text-shadow-white {
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Umbra albă */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); 
   }
 }
 
@@ -51,4 +51,19 @@ html{
   background: linear-gradient(to right, #131313, rgba(19, 19, 19, 0));
   pointer-events: none;
   z-index: 10;
+}
+
+@keyframes fadeRotate {
+  0% {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-fadeRotate {
+  animation: fadeRotate 0.4s ease-in-out;
 }

@@ -4,6 +4,9 @@ import searchIcon from './search.png';
 import userIcon from './user.png';
 import logo from './logo.jpg';
 import admin from './admin.jpg';
+import savedWhite from './savedWhite.png'
+import userWhite from './userWhite.png'
+import user from './user.jpg'
 
 
 import latest1 from './latest1.jpg'
@@ -40,10 +43,13 @@ import author4 from './author4.jpg';
 export const assets = {
     notificationIcon,
     savedIcon,
+    savedWhite,
     searchIcon,
     userIcon,
+    userWhite,
     logo,
     admin,
+    user,
     latest1,
     latest1,
     latest3,

@@ -33,8 +33,8 @@ const Saved = () => {
   if (savedArticles.length === 0) {
     return (
       <div className="text-center text-gray-300 mt-30">
-        <h2 className="text-3xl font-semibold mb-4">No saved articles yet</h2>
-        <p className="text-sm">Start saving articles to read later!</p>
+        <h2 className="text-3xl font-semibold mb-4 dark:text-[#7e8082]">No saved articles yet</h2>
+        <p className="text-sm dark:text-[#7e8082]">Start saving articles to read later!</p>
       </div>
     );
   }
@@ -42,7 +42,7 @@ const Saved = () => {
   return (
     <section className="w-full py-25 px-6 text-white">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-5xl font-bold mb-10 text-center">Saved Articles</h1>
+        <h1 className="text-5xl font-bold mb-10 text-center dark:text-[#7e8082]">Saved Articles</h1>
 
         {/* ---- filter category ----- */}
         {/* <div className="flex flex-wrap justify-center gap-4 mb-8">

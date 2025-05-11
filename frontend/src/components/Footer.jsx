@@ -29,8 +29,8 @@ const Footer = () => {
     <footer className="w-full text-white bg-[#212121] mt-10 dark:bg-[#7e8082]">
       <div className="max-w-[1400px] mx-auto px-6 md:px-16 lg:px-24 xl:px-32 pt-8">
         <div className="flex flex-col md:flex-row justify-center gap-10 border-b border-gray-500/30 pb-6">
-          <div className="md:max-w-96">
-            <div className="flex items-center gap-4 mb-6">
+          <div className="md:max-w-96 w-full text-center md:text-left">
+            <div className="flex justify-center md:justify-start items-center gap-4 mb-6">
               <img src={assets.logo} alt="logo" className="rounded-full h-12 object-cover" />
               <p className="text-2xl font-bold text-[#EDE618]">newsWebsite</p>
             </div>
@@ -40,7 +40,7 @@ const Footer = () => {
           </div>
 
           <div className="flex-1 flex flex-col md:flex-row items-center md:items-start md:justify-end gap-20">
-            <div>
+            <div className="w-full text-center md:text-left">
               <h2 className="font-semibold mb-5 text-[#EDE618]">Company</h2>
               <ul className="text-sm space-y-2">
                 <li><a href="#">Home</a></li>
@@ -50,17 +50,21 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div>
+            <div className="w-full text-center md:text-left">
               <h2 className="font-semibold text-[#EDE618] mb-5">Subscribe to our newsletter</h2>
               <div className="text-sm space-y-2">
                 <p>The latest news, articles, and resources sent to your inbox weekly.</p>
-                <div className="flex items-center gap-2 pt-4">
+                <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center md:items-center gap-4 pt-4">
                   <input
-                    className="border border-gray-500/30 placeholder-gray-500 outline-none w-full max-w-64 h-9 rounded px-2 text-white dark:placeholder-white dark:border-white" type="email"
-                    placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    className="border border-gray-500/30 placeholder-gray-500 outline-none w-full sm:max-w-[300px] md:max-w-[200px] h-9 rounded px-2 text-white dark:placeholder-white dark:border-white"
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                   <button
                     onClick={handleSubscribe}
-                    className="hover:bg-[#EDE618] hover:text-black hover:shadow-[0px_0px_30px_#EDE618]/20 bg-[#EDE618]/80 transition-all cursor-pointer px-6 py-2 rounded text-white font-medium"
+                    className="hover:bg-[#EDE618] hover:text-black hover:shadow-[0px_0px_30px_#EDE618]/20 bg-[#EDE618]/80 transition-all cursor-pointer px-6 py-2 rounded text-white font-medium mt-4 sm:mt-0"
                   >
                     Subscribe
                   </button>
@@ -76,7 +80,7 @@ const Footer = () => {
         </div>
 
         <p className="pt-4 text-center text-xs md:text-sm pb-5">
-          Copyright 2025 © newsWebsite name. All Rights Reserved.
+          Copyright 2025 © newsWebsite. All Rights Reserved.
         </p>
       </div>
     </footer>

@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
-const connectDB = async () =>{
+const connectDB = async () => {
 
-    mongoose.connection.on('connected',()=>{
+    mongoose.connection.on('connected', () => {
         console.log("DB Connected");
-        
     })
-    await mongoose.connect(`${process.env.MONGO_URI}/newsWebsite`)
+
+    await mongoose.connect(`${process.env.MONGODB_URL}/newsWebsite`)
+
 }
 
 export default connectDB;

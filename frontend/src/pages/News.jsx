@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { homepageArticles } from '../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import PageArticle from '../components/PageArticle';
@@ -13,6 +13,20 @@ const News = () => {
   const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState("All");
   const [visibleArticles, setVisibleArticles] = useState(6);
+   const [articles, setArticles] = useState([]);
+
+    useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const res = await axios.get('/article');
+        setArticles(res.data);
+      } catch (err) {
+        console.error('Eroare la preluarea articolelor:', err);
+      }
+    };
+
+    fetchArticles();
+  }, []);
 
   const handleCardClick = (articleId) => {
     navigate(`/article/${articleId}`);
@@ -32,13 +46,17 @@ const News = () => {
   return (
     <section className="w-full py-25 px-6 text-white">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-5xl font-bold mb-10 text-center">All News Articles</h1>
+        <h1 className="text-5xl font-bold mb-10 text-center dark:text-[#7e8082]">All News Articles</h1>
 
         {/* Filter buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           {sections.map((section) => (
-            <button key={section} onClick={() => setSelectedSection(section)} className={`px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer
-                ${selectedSection === section ? 'bg-[#EDE618] text-black font-semibold' : 'bg-[#333] text-white hover:bg-[#EDE618]/80 hover:text-black'}`}>{section}
+            <button
+              key={section}
+              onClick={() => setSelectedSection(section)}
+              className={`px-4 py-2 rounded-full border transition-all duration-300 cursor-pointer
+              ${selectedSection === section ? 'bg-[#EDE618] text-black font-semibold' : 'bg-[#333] text-white hover:bg-[#EDE618]/80 hover:text-black dark:bg-[#7e8082]'}`}>
+              {section}
             </button>
           ))}
         </div>

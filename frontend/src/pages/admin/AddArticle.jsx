@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { authors } from '../../assets/assets';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';  // Asigură-te că ai și stilurile necesare
+
+
+const backendUrl = 'http://localhost:5000';  // sau URL-ul corect al backend-ului
+
 
 const AddArticle = ({ token }) => {
   const [category, setCategory] = useState('');
@@ -52,44 +58,43 @@ const AddArticle = ({ token }) => {
     }
   };
 
-  const handlePostArticle = async () => {
-    try {
-      const newArticle = {
-        title: selectedTitle,
-        description,
-        section: category.toLowerCase(),
-        subcategory,
-        authorName,
-        authorImage: authors.find((a) => a.name === authorName)?.image || '',
-        publishDate: new Date().toISOString(),
-        readTime,
-        tags: tags.split(',').map(tag => tag.trim()),
-        imageUrl: image,
-      };
+const handlePostArticle = async () => {
+  try {
+    const token = localStorage.getItem("token"); // Obține token-ul din localStorage
 
-      const response = await axios.post(backendUrl + "/api/product/add", newArticle, {
-        headers: { token },
-      });
-
-      if (response.data.success) {
-        toast.success(response.data.message);
-        setSelectedTitle('');
-        setDescription('');
-        setCategory('');
-        setSubcategory('');
-        setAuthorName('');
-        setImage(null);
-        setTitleSuggestions([]);
-        setReadTime('5');
-        setTags('');
-      } else {
-        toast.error(response.data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error(error.message);
+    if (!token) {
+      toast.error("You must be logged in.");
+      return;
     }
-  };
+
+    const newArticle = {
+      title: selectedTitle,
+      description,
+      category: category.toLowerCase(),
+      subcategory,
+      authorName,
+      authorImage: authors.find((a) => a.name === authorName)?.image || '',
+      publishDate: new Date().toISOString(),
+      readTime,
+      tags: tags.split(',').map(tag => tag.trim()),
+      imageUrl: image ? [image] : [],
+    };
+
+    const response = await axios.post(backendUrl + "/api/article/add", newArticle, {
+      headers: { Authorization: `Bearer ${token}` }, // Asigură-te că trimiti token-ul corect
+    });
+
+    if (response.data.success) {
+      toast.success(response.data.message);
+    } else {
+      toast.error(response.data.message);
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error(error.message);
+  }
+};
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -6,6 +6,8 @@ import connectCloudinary from './config/cloudinary.js';
 import userRouter from './routes/userRoute.js';
 import articleRouter from './routes/articleRoute.js';
 import nodemailer from 'nodemailer';
+import bodyParser from 'body-parser';
+
 
 // Destructurarea variabilelor de mediu
 const { EMAIL_USER, EMAIL_PASS } = process.env;
@@ -20,9 +22,13 @@ connectCloudinary();
 app.use(express.json())
 app.use(cors())
 
+app.use(bodyParser.json({ limit: '10mb' }));  // 10 MB limit
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+
 // api endpoints
 app.use('/api/user', userRouter);
 app.use('/api/article', articleRouter);
+
 
 // newsletter subscription
 app.post('/subscribe', async (req, res) => {

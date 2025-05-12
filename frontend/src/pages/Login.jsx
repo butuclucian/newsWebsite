@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useUser } from "../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { assets } from "../assets/assets";
+import {assets} from '../assets/assets'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +18,7 @@ const Login = () => {
   const { login } = useUser();
   const navigate = useNavigate();
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,27 +27,48 @@ const Login = () => {
       return;
     }
 
+    // Verificare pentru admin
+    if (username === "admin" && password === "12345678") {
+      // Setăm utilizatorul ca admin
+      const adminUser = {
+        username: "admin",
+        role: "admin",
+        token: "admin-token",
+      };
+      localStorage.setItem("user", JSON.stringify(adminUser));
+      login(adminUser);
+      toast.success("Successfully logged in as Admin!");
+      navigate("/");
+      return;
+    }
+
     if (currentState === "login") {
+      try {
+        const response = await axios.post("http://localhost:5000/api/user/login", {
+          name: username,
+          password,
+        });
 
-      if (username === "admin" && password === "12345678") {
-        const loggedInUser = { username: "admin", role: "admin" };
-        localStorage.setItem("user", JSON.stringify(loggedInUser));  
-        login(loggedInUser);  
-        toast.success("Successfully logged in!");
-        navigate('/');
+        if (response.data.success) {
+          const loggedInUser = {
+            username: response.data.user.name,
+            role: "user",
+            token: response.data.token,
+            profileImage: "/public/newUser.jpg",
+          };
 
-      } if (username === "user" && password === "12345678") {
-        const loggedInUser = { username: "user", role: "user"};
-        localStorage.setItem("user", JSON.stringify(loggedInUser));
-        login(loggedInUser);
-        toast.success("Successfully logged in!");
-        navigate('/');
-      } else {
-        toast.error("Invalid username or password!");
+          localStorage.setItem("user", JSON.stringify(loggedInUser));
+          login(loggedInUser);
+          toast.success("Successfully logged in!");
+          navigate("/");  // Redirecționare către pagina principală pentru utilizatori
+        } else {
+          toast.error(response.data.message || "Login failed");
+        }
+      } catch (error) {
+        toast.error("Login error: " + error.message);
       }
-
     } else {
-      // new acc
+      // Creare cont nou
       try {
         const response = await axios.post('http://localhost:5000/api/user/register', { name: username, email, password });
 
@@ -61,8 +83,7 @@ const Login = () => {
       }
     }
 
-
-    // reset form
+    // Resetare formular
     setUsername("");
     setEmail("");
     setPassword("");

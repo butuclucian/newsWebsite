@@ -5,43 +5,28 @@ import articleModel from "../models/articleModel.js"
 // function for add article
 const addArticle = async (req, res) => {
     try {
+        const { title, description, category, subcategory, author, date } = req.body;
 
-        const { title, description, category, subcategory, author } = req.body
+        const uploadedImage = await cloudinary.uploader.upload(req.files.image[0].path);
+        const imageUrl = uploadedImage.secure_url;
 
-        const image1 = req.files.image1 && req.files.image1[0]
-
-        const image = [image1].filter((item) => item !== undefined);
-
-
-        let imageUrl = await Promise.all(
-            image.map(async (item) => {
-                let result = await cloudinary.uploader.upload(item.path, { resource_type: 'image' });
-                return result.secure_url
-            })
-        )
-        const articleData = {
+        const newArticle = new articleModel({
             title,
             description,
             category,
             subcategory,
             author,
-            image: imageUrl,
-            date: Date.now()
-        }
+            date,
+            image: [image]  // Înlocuiește cu array dacă vrei să păstrezi mai multe imagini
+        });
 
-        console.log(articleData);
-
-        const article = new articleModel(articleData);
-        await article.save()
-
-        res.json({ success: true, message: "Article Added" })
-
+        await newArticle.save();
+        res.status(201).json({ message: 'Articolul a fost adăugat!', success: true });
     } catch (error) {
-        console.log(error)
-        res.json({ success: false, message: error.message })
+        res.status(500).json({ message: error.message, success: false });
     }
+};
 
-}
 
 // function for list article
 const listArticle = async (req, res) => {
@@ -70,10 +55,11 @@ const removeArticle = async (req, res) => {
 // function for single article info
 const singleArticle = async (req, res) => {
     try {
-        
-        const {articleId} = req.body
-        const article = await articleModel.findById(articled)
-        res.json({success:true, product})
+
+        const { articleId } = req.body
+        const article = await articleModel.findById(articleId)
+        res.json({ success: true, article })
+
 
     } catch (error) {
         console.log(error)

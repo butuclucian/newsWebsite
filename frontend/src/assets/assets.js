@@ -7,6 +7,7 @@ import admin from './admin.jpg';
 import savedWhite from './savedWhite.png'
 import userWhite from './userWhite.png'
 import user from './user.jpg'
+import newUser from './newUser.jpg'
 
 
 import latest1 from './latest1.jpg'
@@ -50,6 +51,7 @@ export const assets = {
     logo,
     admin,
     user,
+    newUser,
     latest1,
     latest1,
     latest3,

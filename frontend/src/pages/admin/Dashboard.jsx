@@ -54,7 +54,7 @@ const Dashboard = () => {
 
   return (
     <div className='text-center mt-10 text-black'>
-      <h2 className='text-2xl font-bold mb-8'>Google Analytics Simulation</h2>
+      <h2 className='text-2xl font-bold mb-8'>Google Analytics </h2>
       <div className='flex justify-center'>
         <div className='w-full md:w-3/4'>
           <h3 className='font-semibold text-xl mb-4'>Visitors & Bounce Rate Over Time</h3>
